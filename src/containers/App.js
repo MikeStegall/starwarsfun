@@ -15,9 +15,10 @@ class App extends Component {
     }
 
     componentDidMount() {
-        fetch('https://swapi.co/api/people/')
-        .then(response => response.json())
-        .then(data=> this.setState({people: data.results}))
+        fetch('https://swapi.info/api/people')
+          .then((response) => response.json())
+          .then((data) => this.setState({ people: data.results }))
+          .catch((error) => console.log(error))
 
     }
     onSearchChange = (evt) => {

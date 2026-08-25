@@ -1,4 +1,4 @@
-# starwars-fun-react
+# Starwars Fun React
 
 A React app for browsing Star Wars characters. It fetches character data from
 [swapi.info](https://swapi.info) (an unofficial SWAPI mirror), lets you search
@@ -80,8 +80,9 @@ load and refresh.
 
 ## Notes
 
-- `public/index.html` was not part of the original file set and was added as
-  a minimal CRA scaffold — replace it with your real one if it has custom
-  meta tags, a favicon, or other head content.
+- `public/manifest.json` is a minimal CRA scaffold (referenced by
+  `index.html`) — fill in real icons if you want a proper homescreen entry.
+- `public/favicon.ico` is not included — add your own or the browser tab
+  icon will 404 (harmless, doesn't affect the build).
 - The app depends on `swapi.info` being reachable at runtime; there's no
   backend of its own.

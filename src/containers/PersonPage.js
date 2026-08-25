@@ -12,6 +12,21 @@ const fetchResource = async (url) => {
   }
 }
 
+// Capitalizes the first letter of each comma-separated segment
+// (e.g. "white, blue" -> "White, Blue", "n/a" -> "N/a", "red" -> "Red").
+// Non-strings pass through unchanged.
+const capitalizeFirst = (value) => {
+  if (typeof value !== 'string' || value.length === 0) return value
+  return value
+    .split(',')
+    .map((segment) => {
+      const trimmed = segment.trim()
+      if (trimmed.length === 0) return trimmed
+      return trimmed.charAt(0).toUpperCase() + trimmed.slice(1)
+    })
+    .join(', ')
+}
+
 const PersonPage = () => {
   const { id } = useParams()
   const [person, setPerson] = useState(null)
@@ -60,32 +75,67 @@ const PersonPage = () => {
     <div className='pa4'>
       <div className='tc header'>
         <h1 className='f2'>{person.name}</h1>
-        <p><Link to='/' className='back'>← Back</Link></p>
+        <p>
+          <Link to='/' className='back'>
+            ← Back
+          </Link>
+        </p>
       </div>
 
       <div className='person-detail'>
         <div className='grid-two'>
           <div>
             <h3>Overview</h3>
-            <p><strong>Height:</strong> {person.height} cm</p>
-            <p><strong>Mass:</strong> {person.mass} kg</p>
-            <p><strong>Gender:</strong> {person.gender}</p>
-            <p><strong>Birth Year:</strong> {person.birth_year}</p>
-            <p><strong>Homeworld:</strong> {person.homeworld}</p>
+            <p>
+              <strong>Height:</strong> {person.height} cm
+            </p>
+            <p>
+              <strong>Mass:</strong> {person.mass} kg
+            </p>
+            <p>
+              <strong>Gender:</strong> {person.gender}
+            </p>
+            <p>
+              <strong>Birth Year:</strong> {person.birth_year}
+            </p>
+            <p>
+              <strong>Homeworld:</strong> {person.homeworld}
+            </p>
           </div>
 
           <div>
             <h3>Attributes</h3>
-            <p><strong>Hair:</strong> {person.hair_color}</p>
-            <p><strong>Skin:</strong> {person.skin_color}</p>
-            <p><strong>Eyes:</strong> {person.eye_color}</p>
-
+            <p>
+              <strong>Hair:</strong> {capitalizeFirst(person.hair_color)}
+            </p>
+            <p>
+              <strong>Skin:</strong> {capitalizeFirst(person.skin_color)}
+            </p>
+            <p>
+              <strong>Eyes:</strong> {capitalizeFirst(person.eye_color)}
+            </p>
           </div>
         </div>
 
-        <div style={{marginTop: '1rem'}}>
+        <div style={{ marginTop: '1rem' }}>
           {entries.map(([key, value]) => {
-            if (['name','height','mass','gender','birth_year','hair_color','skin_color','eye_color','homeworld','created','edited','url'].includes(key)) return null
+            if (
+              [
+                'name',
+                'height',
+                'mass',
+                'gender',
+                'birth_year',
+                'hair_color',
+                'skin_color',
+                'eye_color',
+                'homeworld',
+                'created',
+                'edited',
+                'url',
+              ].includes(key)
+            )
+              return null
             return (
               <div key={key} className='mb2'>
                 <strong>{prettyKey(key)}:</strong>

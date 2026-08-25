@@ -1,14 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&display=swap');
+
+:root {
+  /* Background gradient stops (space) */
+  --bg-0: #071126;
+  --bg-1: #081427;
+  --bg-2: #071a2b;
+  --bg-3: #04121a;
+
+  /* Primary accent — teal, used for navigation/interactive elements */
+  --accent-teal: #0ccac4;
+  --accent-teal-dim: rgba(12, 202, 196, 0.35);
+  --accent-teal-glow: rgba(12, 202, 196, 0.18);
+
+  /* Secondary accent — amber, used for emphasis/data */
+  --accent-amber: #f2b544;
+  --accent-amber-dim: rgba(242, 181, 68, 0.35);
+
+  /* Text */
+  --text-primary: #eef6ff;
+  --text-body: #d7e8ff;
+  --text-muted: #8fa3c2;
+
+  /* Surfaces */
+  --surface-1: rgba(255, 255, 255, 0.035);
+  --surface-1-border: rgba(255, 255, 255, 0.07);
+  --surface-2: rgba(10, 18, 26, 0.85);
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  color: #e6f0ff;
-  background: radial-gradient(circle at 10% 10%, #071126 0%, #081427 30%, #071a2b 60%, #04121a 100%);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: var(--text-primary);
+  background: radial-gradient(circle at 10% 10%, var(--bg-0) 0%, var(--bg-1) 30%, var(--bg-2) 60%, var(--bg-3) 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-a { color: #79c6ff }
+a {
+  color: var(--accent-teal);
+}
 
 /* make text easier on the eyes */
-p, li, span { color: #d7e8ff }
+p, li, span {
+  color: var(--text-body);
+}
+
+/* Visible keyboard focus everywhere — accessibility floor */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

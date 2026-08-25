@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import '../containers/app.css'
+import { capitalizeFirst, formatBirthYear } from '../utils/format.js'
 
 const fetchResource = async (url) => {
   try {
@@ -10,21 +11,6 @@ const fetchResource = async (url) => {
   } catch (err) {
     return url
   }
-}
-
-// Capitalizes the first letter of each comma-separated segment
-// (e.g. "white, blue" -> "White, Blue", "n/a" -> "N/a", "red" -> "Red").
-// Non-strings pass through unchanged.
-const capitalizeFirst = (value) => {
-  if (typeof value !== 'string' || value.length === 0) return value
-  return value
-    .split(',')
-    .map((segment) => {
-      const trimmed = segment.trim()
-      if (trimmed.length === 0) return trimmed
-      return trimmed.charAt(0).toUpperCase() + trimmed.slice(1)
-    })
-    .join(', ')
 }
 
 const PersonPage = () => {
@@ -96,7 +82,7 @@ const PersonPage = () => {
               <strong>Gender:</strong> {person.gender}
             </p>
             <p>
-              <strong>Birth Year:</strong> {person.birth_year}
+              <strong>Birth Year:</strong> {formatBirthYear(person.birth_year)}
             </p>
             <p>
               <strong>Homeworld:</strong> {person.homeworld}

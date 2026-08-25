@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { capitalizeFirst, formatBirthYear } from '../utils/format.js'
 
 const fetchResource = async (url) => {
   try {
@@ -82,20 +83,21 @@ const Card = (props) => {
           <strong>Mass:</strong> {mass}kg
         </p>
         <p>
-          <strong>Gender:</strong> {gender === 'n/a' ? 'droid' : gender}
+          <strong>Gender:</strong>{' '}
+          {gender === 'n/a' ? 'Droid' : capitalizeFirst(gender)}
         </p>
         <p>
-          <strong>Birth Year:</strong> {birth_year}
+          <strong>Birth Year:</strong> {formatBirthYear(birth_year)}
         </p>
         <p>
           <strong>Hair Color:</strong>{' '}
-          {hair_color === 'n/a' ? 'droid' : hair_color}
+          {hair_color === 'n/a' ? 'Droid' : capitalizeFirst(hair_color)}
         </p>
         <p>
-          <strong>Skin Color:</strong> {skin_color}
+          <strong>Skin Color:</strong> {capitalizeFirst(skin_color)}
         </p>
         <p>
-          <strong>Eye Color:</strong> {eye_color}
+          <strong>Eye Color:</strong> {capitalizeFirst(eye_color)}
         </p>
         <p>
           <strong>Homeworld:</strong> {homeworldName || homeworld}

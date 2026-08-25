@@ -5,13 +5,9 @@ import Card from './Card';
 const CardList = ({people}) => {
     const cardComponent = people.map((user, idx) => {
       console.log(user, idx)
-        return <Card key={idx} name={people[idx].name} height={people[idx].height} gender={people[idx].gender} mass={people[idx].mass}/>
+      return <Card key={idx} {...user} />
     })
-    return (
-        <div>
-        {cardComponent}
-        </div>
-    )
+    return <div className='card-list'>{cardComponent}</div>
 }
 
 export default CardList

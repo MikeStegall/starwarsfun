@@ -1,10 +1,11 @@
 {
-  "name": "robofriends",
+  "name": "Star wars Fun React",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.1",
     "react-scripts": "5.0.1",
     "tachyons": "^4.10.0"
   },
